@@ -13,9 +13,14 @@ using System.Data.Common;
 //Définir le chemin contant l'ip, les informations d'authenfication etc...
 string connectionString = @"Data Source=LENOMIKE\TFTIC2022;Initial Catalog=ExempleAdo;Integrated Security=True;Connect Timeout=30;Encrypt=true;Trust Server Certificate=True;Application Intent=ReadWrite;Multi Subnet Failover=False";
 //Créer un objet permettant de se connecter
-
-#endregion
 DBManager dBManager = new DBManager(connectionString);
+List<Jokes> lj = dBManager.GetAllJokes();
+foreach (Jokes jokes in lj)
+{
+    Console.WriteLine(jokes.Title);
+}
+#endregion
+ 
 //insertion d'une joke
 Jokes lablag= new Jokes();
 Console.WriteLine("Entrez le titre de la blague");
