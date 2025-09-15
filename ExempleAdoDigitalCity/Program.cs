@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using ExempleAdoDigitalCity;
 using Microsoft.Data.SqlClient;
+using Models;
 using System.Data.Common;
  
 
@@ -48,6 +50,10 @@ if (connexion.State == System.Data.ConnectionState.Open)
         {
             int? id = reader["Id"] == DBNull.Value ? null : (int?)reader["Id"];
             string? titre = reader["Title"] == DBNull.Value ? "" : reader["Title"].ToString();
+            Jokes j = new Jokes();
+            j.Id = id.Value;
+            j.Title = titre;
+            j.Body = reader["Body"] == DBNull.Value ? "" : reader["Body"].ToString(); ;
             Console.WriteLine(titre);
         }
     }
@@ -70,57 +76,15 @@ try
 catch (SqlException sqex)
 {
     Console.WriteLine(sqex.Message);
-} 
+}
 #endregion
-
+DBManager dBManager = new DBManager(connectionString);
 //insertion d'une joke
+Jokes lablag= new Jokes();
+Console.WriteLine("Entrez le titre de la blague");
+lablag.Title = Console.ReadLine();
+Console.WriteLine("Entre le corps de la blague");
+lablag.Body = Console.ReadLine();
 
-//connexion
-DbConnection oCon = new SqlConnection(connectionString);
-// ouvrir
-try
-{
-    oCon.Open();
-}
-catch (SqlException sqlex)
-{
-    Console.WriteLine(sqlex.Message);
-}
-//si je suis connecté
-if(oCon.State == System.Data.ConnectionState.Open)
-{
-    //Vient de la console par exemple
-    Console.WriteLine("Encodez le titre et le corps de la blague");
-    string titre = Console.ReadLine(); 
-    string body = Console.ReadLine(); 
-
-    //commande
-    DbCommand insertCommand = oCon.CreateCommand();
-   
-    // requête
-    string maRequete = @"INSERT INTO JOKES (Title, Body) VALUES (@monTitre, @body)";
-
-    //Version Longue
-    DbParameter param2 = new SqlParameter();
-    param2.ParameterName = "body";
-    param2.Value = body;
-
-    // des infos a inserer
-    insertCommand.CommandText = maRequete;
-    //Version rapide mais moins lisible
-    insertCommand.Parameters.Add(new SqlParameter("monTitre", titre));
-    insertCommand.Parameters.Add(param2);
-    // executer
-    insertCommand.ExecuteNonQuery();
-}
-
-
-//fermer
-try
-{
-    oCon.Close();
-}
-catch (Exception ex)
-{
-    Console.WriteLine(ex.Message);
-}
+if(dBManager.InsertJokes(lablag))
+    Console.WriteLine("Insertion effectuée");

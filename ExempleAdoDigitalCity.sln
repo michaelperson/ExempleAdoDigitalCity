@@ -5,6 +5,8 @@ VisualStudioVersion = 17.14.36414.22 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExempleAdoDigitalCity", "ExempleAdoDigitalCity\ExempleAdoDigitalCity.csproj", "{A820CCAB-5CBF-46A5-824D-3C8131F43FCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{210A1F0C-EF78-42E1-B3C5-8A8D90EFA7FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A820CCAB-5CBF-46A5-824D-3C8131F43FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A820CCAB-5CBF-46A5-824D-3C8131F43FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A820CCAB-5CBF-46A5-824D-3C8131F43FCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{210A1F0C-EF78-42E1-B3C5-8A8D90EFA7FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{210A1F0C-EF78-42E1-B3C5-8A8D90EFA7FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{210A1F0C-EF78-42E1-B3C5-8A8D90EFA7FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{210A1F0C-EF78-42E1-B3C5-8A8D90EFA7FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
